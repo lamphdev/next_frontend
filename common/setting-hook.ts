@@ -30,6 +30,7 @@ export const useSettingPagination = () => {
             setLoading(true);
             const result = await querySetting(filter);
             setPage(result);
+            console.log('set value', result, page);
         } catch (e) {
             setError(e);
         } finally {

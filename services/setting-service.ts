@@ -23,17 +23,17 @@ export const querySetting = async (filter: any): Promise<Page<Setting>> => {
     const query = qs.stringify(filter, {
         allowDots: true,
     })
-    const response = await http().get(`/api/setting?${query}`);
+    const response = await http().get(`/api/settings?${query}`);
     return response.data;
 }
 
 export const createSetting = async (setting: Setting): Promise<Setting> => {
-    const response = await http().post('/api/setting', setting);
+    const response = await http().post('/api/settings', setting);
     return response.data;
 }
 
 export const infoSetting = async (id: string): Promise<Setting> => {
-    const response = await http().get(`/api/setting/${id}`);
+    const response = await http().get(`/api/settings/${id}`);
     return response.data;
 }
 
@@ -42,17 +42,17 @@ export const infoSetting = async (id: string): Promise<Setting> => {
 
 export const getOptions = async (settingId: string, filter: any): Promise<Page<SettingOption>> => {
     const query = qs.stringify(filter, { allowDots: true });
-    const response = await http().get(`/api/setting/${settingId}/options?${query}`);
+    const response = await http().get(`/api/settings/${settingId}/options?${query}`);
     return response.data;
 }
 
 export const createOption = async (settingId: string, option: SettingOption): Promise<SettingOption> => {
-    const response = await http().post(`/api/setting/${settingId}/options`, option);
+    const response = await http().post(`/api/settings/${settingId}/options`, option);
     return response.data;
 }
 
 export const updateOption = async (settingId: string, option: SettingOption): Promise<SettingOption> => {
-    const response = await http().put(`/api/setting/${settingId}/options/${option.id}`, option);
+    const response = await http().put(`/api/settings/${settingId}/options/${option.id}`, option);
     return response.data;
 }
 
