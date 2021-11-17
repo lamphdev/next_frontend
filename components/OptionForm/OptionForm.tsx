@@ -6,14 +6,18 @@ import * as yup from 'yup';
 
 
 const optionSchema = yup.object({
-    name: yup.string().required('this field is required').max(200, 'max length is 200'),
-    value: yup.string().required('this field is required').max(200, 'max length is 200'),
-    metadata: yup.string().max(1024, 'max length is 1024')
+    name:       yup.string().required('this field is required').max(200, 'max length is 200'),
+    value:      yup.string().required('this field is required').max(200, 'max length is 200'),
+    metadata:   yup.string().max(1024, 'max length is 1024')
 })
 
 export default function OptionForm({ onSubmit }) {
 
-    const { control, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(optionSchema) });
+    const { 
+        control, 
+        handleSubmit, 
+        formState: { errors } 
+    } = useForm({ resolver: yupResolver(optionSchema) });
 
     const onFormSubmit = (value) => {
         if (onSubmit) {
