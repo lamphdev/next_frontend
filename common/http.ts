@@ -5,7 +5,8 @@ const internal = axios.create();
 
 const external = axios.create({
     // baseURL: 'http://localhost:8080',
-    baseURL: 'http://18.117.179.47',
+    // baseURL: 'http://18.117.179.47',
+    baseURL: 'http://www.lph11.link',
     withCredentials: true,
 });
 

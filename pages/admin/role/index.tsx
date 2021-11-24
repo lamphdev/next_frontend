@@ -1,12 +1,13 @@
 import { LphPage } from "../../../common/page-utils"
 import AdminLayout from "../../../layouts/AdminLayout/AdminLayout"
 
-import { Button, Modal, Popconfirm, Table } from 'antd';
+import { Button, Input, Modal, Popconfirm, Table } from 'antd';
 import { ColumnsType } from "antd/lib/table";
 import { useRoleHook } from "../../../common/role-hook";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import RoleForm from "../../../components/RoleForm/RoleForm";
 import { Role } from "../../../services/role-service";
+import { useDebounce } from "../../../common/helper";
 
 
 function RolePage() {
@@ -68,6 +69,15 @@ function RolePage() {
         setVisibleModel(false);
     }
 
+    const onFilter = useDebounce((e) => {
+        if (e.target.value) {
+            roleHook.setFilter({ name: e.target.value });
+        } else {
+            roleHook.setFilter(null);
+        }
+        // console.log(e.target.value)
+    }, 500)
+
     return (
         <div style={{ width: '100%', height: '100%', padding: '1rem', backgroundColor: '#fff' }}>
             <h1>Role Page</h1>
@@ -80,6 +90,7 @@ function RolePage() {
                 destroyOnClose>
                 <RoleForm role={role} onSubmit={onCreate}></RoleForm>
             </Modal>
+            <Input onChange={onFilter} />
             <Table
                 rowKey={row => row.role}
                 loading={roleHook.loading}

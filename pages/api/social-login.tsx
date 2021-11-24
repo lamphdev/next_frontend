@@ -14,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.setHeader("set-cookie", response.headers["set-cookie"]);
         res.json(response.data);
     } catch (e) {
+        console.log(e);
         res.status(401).json(e);
     }
 }

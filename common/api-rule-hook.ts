@@ -70,7 +70,8 @@ export const useApiRuleHook = (initFilter = { pageSize: 10 }) => {
         filter, setFilter,
         apiRules, setApiRules,
         loading, setLoading,
-        error, setError
+        error, setError,
+        fnQuery, fnCreate, fnUpdate, fnDelete
     }
 
 }
