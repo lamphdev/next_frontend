@@ -5,6 +5,7 @@ import { getUserInfo } from '../services/auth-service';
 import 'antd/dist/antd.css'
 import '../styles/globals.css'
 import { I18nProvider } from '../common/i18n-provider';
+import { initHttp } from '../common/http';
 
 function MyApp({ Component, pageProps, initUser, i18nMessage }) {
   const { Layout } = Component;
